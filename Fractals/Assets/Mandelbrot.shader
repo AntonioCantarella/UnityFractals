@@ -3,6 +3,8 @@
 	Properties
 	{
 		_MainTex ("Texture", 2D) = "white" {}
+		_Area("Area", vector) = (0,0, 4, 4)
+		_LoopCount("LoopCount", float) = 255
 	}
 	SubShader
 	{
@@ -38,18 +40,20 @@
 			}
 			
 			sampler2D _MainTex;
-
+			float4 _Area;
+			float _LoopCount;
 			fixed4 frag (v2f i) : SV_Target
 			{
-				float2 c = i.uv;
+				float2 c = _Area.xy + ((i.uv - 0.5f) * _Area.zw);
 				float2	z;
-				float loop;
-				for (loop = 0; loop < 255; ++loop)
+				float loop_value;
+				float loop_count = _LoopCount;
+				for (loop_value = 0; loop_value < loop_count; ++loop_value)
 				{
 					z = float2(z.x * z.x - z.y * z.y, 2 * z.x * z.y) + c;
 					if (length(z) > 2) break;
 				}
-				return loop/255;
+				return loop_value / loop_count;
 			}
 			ENDCG
 		}
