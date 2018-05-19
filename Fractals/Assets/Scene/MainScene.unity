@@ -435,9 +435,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _fractalMaterial: {fileID: 2100000, guid: fcc5f00d03466e544abf4040f815dd8e, type: 2}
-  _pos: {x: -0.24, y: -0.33}
+  _pos: {x: -0.21, y: -0.33}
   _scale: -1.49
-  _loopCount: 29.04
+  _loopCount: 333.6
 --- !u!1 &1642824586
 GameObject:
   m_ObjectHideFlags: 0
